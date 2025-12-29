@@ -148,7 +148,6 @@ uvicorn main:app --reload
 
 La aplicación estará disponible en: http://localhost:8000
 
-Documentación interactiva: http://localhost:8000/api/v1/docs
 
 ## Credenciales de Usuario Inicial
 
@@ -381,19 +380,3 @@ Para eliminar también los datos:
 ```bash
 docker-compose down -v
 ```
-
-## Notas
-
-- El archivo `.env` está en `.gitignore` por seguridad. Usar `.env.example` como plantilla
-- El SECRET_KEY debe ser cambiado en producción (usar `openssl rand -hex 32`)
-- La aplicación está configurada para CORS permisivo (allow_origins=["*"]). En producción debe restringirse
-- El script init_db.py es idempotente: no recrea el usuario si ya existe
-
-## Próximas Mejoras
-
-- Tests unitarios e integración
-- Logging estructurado
-- Rate limiting
-- Búsqueda full-text en tareas
-- Soft delete para tareas
-- Filtros adicionales (fecha, ordenamiento personalizado)
