@@ -1,0 +1,61 @@
+### Variables
+@baseUrl = http://localhost:8000/api/v1
+@token = your_token_here
+
+### Health Check
+GET http://localhost:8000
+
+### Login
+POST {{baseUrl}}/auth/login
+Content-Type: application/json
+
+{
+  "email": "admin@correo.com",
+  "password": "Admin123!"
+}
+
+### Create Task
+POST {{baseUrl}}/tasks
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "title": "Nueva tarea de prueba",
+  "description": "Esta es una descripción de prueba",
+  "status": "pending"
+}
+
+### Get All Tasks (Paginated)
+GET {{baseUrl}}/tasks?page=1&page_size=10
+Authorization: Bearer {{token}}
+
+### Get Tasks Filtered by Status
+GET {{baseUrl}}/tasks?page=1&page_size=10&status=pending
+Authorization: Bearer {{token}}
+
+### Get Single Task
+GET {{baseUrl}}/tasks/1
+Authorization: Bearer {{token}}
+
+### Update Task
+PUT {{baseUrl}}/tasks/1
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "title": "Tarea actualizada",
+  "status": "in_progress"
+}
+
+### Update Task - Only Status
+PUT {{baseUrl}}/tasks/1
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "status": "done"
+}
+
+### Delete Task
+DELETE {{baseUrl}}/tasks/1
+Authorization: Bearer {{token}}
