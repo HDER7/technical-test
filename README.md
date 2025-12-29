@@ -73,7 +73,18 @@ pip install -r requirements.txt
 
 ### 5. Configurar variables de entorno
 
-El archivo `.env` ya está configurado con valores por defecto. Verificar que contenga:
+Copiar el archivo de ejemplo y configurarlo:
+
+```bash
+cp .env.example .env
+```
+
+En Windows (PowerShell):
+```bash
+copy .env.example .env
+```
+
+Editar `.env` con tus valores. Ejemplo de configuración:
 
 ```env
 # Database
@@ -97,7 +108,10 @@ INITIAL_USER_EMAIL=admin@correo.com
 INITIAL_USER_PASSWORD=Admin123!
 ```
 
-**Importante**: En producción, cambiar `SECRET_KEY` por una clave segura generada aleatoriamente.
+**Importante**:
+- Cambiar `DB_PASSWORD` si configuraste otra contraseña en PostgreSQL
+- En producción, generar `SECRET_KEY` seguro con: `openssl rand -hex 32`
+- El archivo `.env` no se sube a GitHub por seguridad
 
 ### 6. Levantar PostgreSQL con Docker
 
@@ -370,8 +384,8 @@ docker-compose down -v
 
 ## Notas
 
-- El archivo `.env` está incluido para facilitar la evaluación. En un proyecto real estaría en `.gitignore`
-- El SECRET_KEY debe ser cambiado en producción
+- El archivo `.env` está en `.gitignore` por seguridad. Usar `.env.example` como plantilla
+- El SECRET_KEY debe ser cambiado en producción (usar `openssl rand -hex 32`)
 - La aplicación está configurada para CORS permisivo (allow_origins=["*"]). En producción debe restringirse
 - El script init_db.py es idempotente: no recrea el usuario si ya existe
 

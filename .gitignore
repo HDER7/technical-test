@@ -34,7 +34,7 @@ env/
 *~
 
 # Environment variables
-# .env
+.env
 
 # Database
 *.db
