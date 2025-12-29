@@ -4,7 +4,7 @@ API REST desarrollada con FastAPI para gestión de tareas con autenticación JWT
 
 ## Tecnologías
 
-- **Python 3.11.9**
+- **Python 3.11.8**
 - **FastAPI** - Framework web moderno y rápido
 - **SQLAlchemy** - ORM para base de datos
 - **PostgreSQL** - Base de datos relacional
